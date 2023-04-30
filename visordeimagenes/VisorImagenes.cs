@@ -57,6 +57,8 @@ namespace visordeimagenes
             hija.PictureBox.SizeMode = PictureBoxSizeMode.AutoSize;
             hija.AutoScroll = true;
             hija.Show();
+            this.VentanaHija.AutoScroll = true;
+            this.VentanaHija.PictureBox.Image = Resource1.imagen;
         }
 
         public VentanaHija VentanaHija { 
@@ -69,12 +71,12 @@ namespace visordeimagenes
             {
                 this.VentanaHija.Close();
             }
+          
         }
-
-        private void tCargar_Click(object sender, EventArgs e)
+        
+        private void tAjustar_Click(object sender, EventArgs e)
         {
 
-            this.VentanaHija.PictureBox.Image = Resource1.imagen;
         }
     }
 }

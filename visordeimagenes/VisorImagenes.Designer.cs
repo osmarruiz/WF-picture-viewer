@@ -40,14 +40,13 @@
             this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.tArchivo = new System.Windows.Forms.ToolStripMenuItem();
             this.tSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.tCerrar = new System.Windows.Forms.ToolStripMenuItem();
             this.tNuevo = new System.Windows.Forms.ToolStripMenuItem();
             this.tEdicion = new System.Windows.Forms.ToolStripMenuItem();
             this.tVer = new System.Windows.Forms.ToolStripMenuItem();
-            this.tImagen = new System.Windows.Forms.ToolStripMenuItem();
             this.tVentana = new System.Windows.Forms.ToolStripMenuItem();
             this.tCascada = new System.Windows.Forms.ToolStripMenuItem();
             this.tMosaicoh = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,9 +54,8 @@
             this.tAyuda = new System.Windows.Forms.ToolStripMenuItem();
             this.tAcercade = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.tCargar = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.mainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -76,7 +74,7 @@
             this.toolStripButton8});
             this.toolStrip1.Location = new System.Drawing.Point(0, 28);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(1068, 27);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -162,30 +160,28 @@
             this.toolStripButton8.Size = new System.Drawing.Size(29, 24);
             this.toolStripButton8.Text = "toolStripButton8";
             // 
-            // menuStrip1
+            // mainMenu
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mainMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tArchivo,
             this.tEdicion,
             this.tVer,
-            this.tImagen,
             this.tVentana,
             this.tAyuda});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.MdiWindowListItem = this.tVentana;
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
+            this.mainMenu.Location = new System.Drawing.Point(0, 0);
+            this.mainMenu.MdiWindowListItem = this.tVentana;
+            this.mainMenu.Name = "mainMenu";
+            this.mainMenu.Size = new System.Drawing.Size(1068, 28);
+            this.mainMenu.TabIndex = 1;
+            this.mainMenu.Text = "menuStrip1";
             // 
             // tArchivo
             // 
             this.tArchivo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tSalir,
             this.tCerrar,
-            this.tNuevo,
-            this.tCargar});
+            this.tNuevo});
             this.tArchivo.Name = "tArchivo";
             this.tArchivo.Size = new System.Drawing.Size(73, 24);
             this.tArchivo.Text = "Archivo";
@@ -223,12 +219,6 @@
             this.tVer.Size = new System.Drawing.Size(44, 24);
             this.tVer.Text = "Ver";
             // 
-            // tImagen
-            // 
-            this.tImagen.Name = "tImagen";
-            this.tImagen.Size = new System.Drawing.Size(73, 24);
-            this.tImagen.Text = "Imagen";
-            // 
             // tVentana
             // 
             this.tVentana.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -242,21 +232,21 @@
             // tCascada
             // 
             this.tCascada.Name = "tCascada";
-            this.tCascada.Size = new System.Drawing.Size(222, 26);
+            this.tCascada.Size = new System.Drawing.Size(224, 26);
             this.tCascada.Text = "Cascada";
             this.tCascada.Click += new System.EventHandler(this.tCascada_Click);
             // 
             // tMosaicoh
             // 
             this.tMosaicoh.Name = "tMosaicoh";
-            this.tMosaicoh.Size = new System.Drawing.Size(222, 26);
+            this.tMosaicoh.Size = new System.Drawing.Size(224, 26);
             this.tMosaicoh.Text = "Mosaico Horizontal";
             this.tMosaicoh.Click += new System.EventHandler(this.tMosaicoh_Click);
             // 
             // tMosaicov
             // 
             this.tMosaicov.Name = "tMosaicov";
-            this.tMosaicov.Size = new System.Drawing.Size(222, 26);
+            this.tMosaicov.Size = new System.Drawing.Size(224, 26);
             this.tMosaicov.Text = "Mosaico Vertical";
             this.tMosaicov.Click += new System.EventHandler(this.tMosaicov_Click);
             // 
@@ -278,35 +268,28 @@
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 614);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1068, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
-            // 
-            // tCargar
-            // 
-            this.tCargar.Name = "tCargar";
-            this.tCargar.Size = new System.Drawing.Size(224, 26);
-            this.tCargar.Text = "Cargar";
-            this.tCargar.Click += new System.EventHandler(this.tCargar_Click);
             // 
             // VisorImagenes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1068, 636);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.mainMenu);
             this.IsMdiContainer = true;
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.mainMenu;
             this.Name = "VisorImagenes";
             this.Text = "Form1";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.mainMenu.ResumeLayout(false);
+            this.mainMenu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -325,11 +308,10 @@
         private System.Windows.Forms.ToolStripButton toolStripButton7;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton toolStripButton8;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip mainMenu;
         private System.Windows.Forms.ToolStripMenuItem tArchivo;
         private System.Windows.Forms.ToolStripMenuItem tEdicion;
         private System.Windows.Forms.ToolStripMenuItem tVer;
-        private System.Windows.Forms.ToolStripMenuItem tImagen;
         private System.Windows.Forms.ToolStripMenuItem tVentana;
         private System.Windows.Forms.ToolStripMenuItem tAyuda;
         private System.Windows.Forms.StatusStrip statusStrip1;
@@ -340,7 +322,6 @@
         private System.Windows.Forms.ToolStripMenuItem tSalir;
         private System.Windows.Forms.ToolStripMenuItem tCerrar;
         private System.Windows.Forms.ToolStripMenuItem tNuevo;
-        private System.Windows.Forms.ToolStripMenuItem tCargar;
     }
 }
 
