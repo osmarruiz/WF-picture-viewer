@@ -16,6 +16,8 @@ namespace visordeimagenes
         {
             InitializeComponent();
             this.Text = titulo;
+            /*this.Activated += VentanaHija_Activated;
+            this.FormClosing += VentanaHija_FormClosing;*/
         }
 
         public PictureBox PictureBox 
@@ -74,7 +76,7 @@ namespace visordeimagenes
                 Font font = new Font("Arial", 20);
 
                 // Crear un objeto SolidBrush con el color blanco
-                SolidBrush brush = new SolidBrush(Color.Black);
+                SolidBrush brush = new SolidBrush(Color.White);
 
                 // Dibujar el texto "Programación Visual" en la posición 0,0 de la imagen
                 gfx.DrawString("Programación Visual", font, brush, new Point(0, 0));
@@ -82,6 +84,30 @@ namespace visordeimagenes
 
             // Refrescar el PictureBox para mostrar la imagen actualizada
             PictureBox.Refresh();
+        }
+
+        private void VentanaHija_Activated(object sender, EventArgs e)
+        {
+            Form mdiContainer = this.MdiParent;
+
+            // Verificar que el MDIContainer no sea nulo 
+            if (mdiContainer != null)
+            {
+                // Concatenar el título de la ventana hija con el título del MDIContainer
+                mdiContainer.Text = "Visor de imagenes - " + this.Text;
+            }
+        }
+
+        private void VentanaHija_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Form mdiContainer = this.MdiParent;
+
+            // Verificar que el MDIContainer no sea nulo 
+            if (mdiContainer != null )
+            {
+                // Restaurar el título original del MDIContainer
+                mdiContainer.Text = "Visor de imagenes";
+            }
         }
     }
 }

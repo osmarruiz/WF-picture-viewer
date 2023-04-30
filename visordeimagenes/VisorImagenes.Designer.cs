@@ -285,7 +285,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.mainMenu;
             this.Name = "VisorImagenes";
-            this.Text = "Form1";
+            this.Text = "Visor de imagenes";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.mainMenu.ResumeLayout(false);

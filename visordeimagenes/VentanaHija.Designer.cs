@@ -41,9 +41,9 @@
             // m_PictureBox
             // 
             this.m_PictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.m_PictureBox.Location = new System.Drawing.Point(0, 28);
+            this.m_PictureBox.Location = new System.Drawing.Point(0, 0);
             this.m_PictureBox.Name = "m_PictureBox";
-            this.m_PictureBox.Size = new System.Drawing.Size(700, 424);
+            this.m_PictureBox.Size = new System.Drawing.Size(700, 452);
             this.m_PictureBox.TabIndex = 0;
             this.m_PictureBox.TabStop = false;
             // 
@@ -102,6 +102,8 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "VentanaHija";
             this.Text = "VentanaHija";
+            this.Activated += new System.EventHandler(this.VentanaHija_Activated);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.VentanaHija_FormClosing);
             this.Load += new System.EventHandler(this.VentanaHija_Load);
             this.Resize += new System.EventHandler(this.VentanaHija_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.m_PictureBox)).EndInit();
