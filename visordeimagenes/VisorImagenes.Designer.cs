@@ -45,6 +45,7 @@
             this.tSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.tCerrar = new System.Windows.Forms.ToolStripMenuItem();
             this.tNuevo = new System.Windows.Forms.ToolStripMenuItem();
+            this.tAbrir = new System.Windows.Forms.ToolStripMenuItem();
             this.tEdicion = new System.Windows.Forms.ToolStripMenuItem();
             this.tVer = new System.Windows.Forms.ToolStripMenuItem();
             this.tVentana = new System.Windows.Forms.ToolStripMenuItem();
@@ -181,7 +182,8 @@
             this.tArchivo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tSalir,
             this.tCerrar,
-            this.tNuevo});
+            this.tNuevo,
+            this.tAbrir});
             this.tArchivo.Name = "tArchivo";
             this.tArchivo.Size = new System.Drawing.Size(73, 24);
             this.tArchivo.Text = "Archivo";
@@ -195,6 +197,7 @@
             // 
             // tCerrar
             // 
+            this.tCerrar.Enabled = false;
             this.tCerrar.Name = "tCerrar";
             this.tCerrar.Size = new System.Drawing.Size(224, 26);
             this.tCerrar.Text = "Cerrar";
@@ -206,6 +209,13 @@
             this.tNuevo.Size = new System.Drawing.Size(224, 26);
             this.tNuevo.Text = "Nuevo";
             this.tNuevo.Click += new System.EventHandler(this.tNuevo_Click);
+            // 
+            // tAbrir
+            // 
+            this.tAbrir.Name = "tAbrir";
+            this.tAbrir.Size = new System.Drawing.Size(224, 26);
+            this.tAbrir.Text = "Abrir";
+            this.tAbrir.Click += new System.EventHandler(this.tAbrir_Click);
             // 
             // tEdicion
             // 
@@ -231,6 +241,7 @@
             // 
             // tCascada
             // 
+            this.tCascada.Enabled = false;
             this.tCascada.Name = "tCascada";
             this.tCascada.Size = new System.Drawing.Size(224, 26);
             this.tCascada.Text = "Cascada";
@@ -238,6 +249,7 @@
             // 
             // tMosaicoh
             // 
+            this.tMosaicoh.Enabled = false;
             this.tMosaicoh.Name = "tMosaicoh";
             this.tMosaicoh.Size = new System.Drawing.Size(224, 26);
             this.tMosaicoh.Text = "Mosaico Horizontal";
@@ -245,6 +257,7 @@
             // 
             // tMosaicov
             // 
+            this.tMosaicov.Enabled = false;
             this.tMosaicov.Name = "tMosaicov";
             this.tMosaicov.Size = new System.Drawing.Size(224, 26);
             this.tMosaicov.Text = "Mosaico Vertical";
@@ -286,6 +299,8 @@
             this.MainMenuStrip = this.mainMenu;
             this.Name = "VisorImagenes";
             this.Text = "Visor de imagenes";
+            this.Load += new System.EventHandler(this.VisorImagenes_Load);
+            this.MdiChildActivate += new System.EventHandler(this.VisorImagenes_MdiChildActivate);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.mainMenu.ResumeLayout(false);
@@ -322,6 +337,7 @@
         private System.Windows.Forms.ToolStripMenuItem tSalir;
         private System.Windows.Forms.ToolStripMenuItem tCerrar;
         private System.Windows.Forms.ToolStripMenuItem tNuevo;
+        private System.Windows.Forms.ToolStripMenuItem tAbrir;
     }
 }
 

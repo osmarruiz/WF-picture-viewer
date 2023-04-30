@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,9 +63,8 @@ namespace visordeimagenes
             var image = this.PictureBox.Image;
             if (image != null)
             {
-                var Osize = image.Size;
+               
                 image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                this.PictureBox.Size = new Size(Osize.Width, Osize.Height);   
                 this.PictureBox.Refresh();
             }
         }
@@ -138,6 +138,55 @@ namespace visordeimagenes
                 this.PictureBox.Refresh();
                 escala_grises_aplic = true;
             }
+        }
+
+        private string ruta = "";
+        private void guardaComoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Mostrar diálogo SaveFileDialog y configurarlo de forma 
+            // análoga al OpenFileDialog de la opción "Abrir" 
+            SaveFileDialog dlgGuardar = new SaveFileDialog();
+            dlgGuardar.Filter = "Archivos JPEG (*.jpg)|*.jpg";
+            dlgGuardar.Title = "Guardar imagen como...";
+            if (dlgGuardar.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            // Guardar la imagen en el archivo seleccionado
+            if (Path.GetExtension(dlgGuardar.FileName).ToLower() == ".jpg")
+            {
+                ruta =dlgGuardar.FileName;
+                PictureBox.Image.Save(dlgGuardar.FileName, ImageFormat.Jpeg);
+            }
+            // Actualizar título de esta ventana
+            this.Text = Path.GetFileName(dlgGuardar.FileName);
+            Form mdiContainer = this.MdiParent;
+
+            // Verificar que el MDIContainer no sea nulo 
+            if (mdiContainer != null)
+            {
+                // Concatenar el título de la ventana hija con el título del MDIContainer
+                mdiContainer.Text = "Visor de imagenes - " + this.Text;
+            }
+
+        }
+
+        private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+                string titulo = this.Text;
+                if (titulo.StartsWith("Doc"))
+                {
+                    guardaComoToolStripMenuItem_Click(sender, e);
+                }
+                else
+                {
+                this.PictureBox.Refresh();
+               
+                PictureBox.Image.Save(ruta, ImageFormat.Jpeg);
+                }
+            
         }
     }
 }

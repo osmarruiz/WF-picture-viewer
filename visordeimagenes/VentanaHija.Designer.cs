@@ -35,16 +35,19 @@
             this.tRotar = new System.Windows.Forms.ToolStripMenuItem();
             this.tAñadir = new System.Windows.Forms.ToolStripMenuItem();
             this.tEscalagrises = new System.Windows.Forms.ToolStripMenuItem();
+            this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.guardaComoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.m_PictureBox)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // m_PictureBox
             // 
-            this.m_PictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.m_PictureBox.Location = new System.Drawing.Point(0, 28);
+            this.m_PictureBox.Location = new System.Drawing.Point(0, 37);
             this.m_PictureBox.Name = "m_PictureBox";
-            this.m_PictureBox.Size = new System.Drawing.Size(700, 424);
+            this.m_PictureBox.Size = new System.Drawing.Size(701, 413);
             this.m_PictureBox.TabIndex = 0;
             this.m_PictureBox.TabStop = false;
             // 
@@ -52,7 +55,8 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.imagenToolStripMenuItem});
+            this.imagenToolStripMenuItem,
+            this.archivoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(700, 28);
@@ -76,30 +80,66 @@
             // menuImagenAjustar
             // 
             this.menuImagenAjustar.Name = "menuImagenAjustar";
-            this.menuImagenAjustar.Size = new System.Drawing.Size(224, 26);
+            this.menuImagenAjustar.Size = new System.Drawing.Size(198, 26);
             this.menuImagenAjustar.Text = "Ajustar Ventana";
             this.menuImagenAjustar.Click += new System.EventHandler(this.ajustarVentanaToolStripMenuItem_Click);
             // 
             // tRotar
             // 
             this.tRotar.Name = "tRotar";
-            this.tRotar.Size = new System.Drawing.Size(224, 26);
+            this.tRotar.Size = new System.Drawing.Size(198, 26);
             this.tRotar.Text = "Rotar 90 grados";
             this.tRotar.Click += new System.EventHandler(this.tRotar_Click);
             // 
             // tAñadir
             // 
             this.tAñadir.Name = "tAñadir";
-            this.tAñadir.Size = new System.Drawing.Size(224, 26);
+            this.tAñadir.Size = new System.Drawing.Size(198, 26);
             this.tAñadir.Text = "Añadir texto";
             this.tAñadir.Click += new System.EventHandler(this.tAñadir_Click);
             // 
             // tEscalagrises
             // 
             this.tEscalagrises.Name = "tEscalagrises";
-            this.tEscalagrises.Size = new System.Drawing.Size(224, 26);
+            this.tEscalagrises.Size = new System.Drawing.Size(198, 26);
             this.tEscalagrises.Text = "Escala de grises";
             this.tEscalagrises.Click += new System.EventHandler(this.tEscalagrises_Click);
+            // 
+            // archivoToolStripMenuItem
+            // 
+            this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.guardarToolStripMenuItem,
+            this.guardaComoToolStripMenuItem,
+            this.toolStripSeparator1});
+            this.archivoToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.MatchOnly;
+            this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
+            this.archivoToolStripMenuItem.Text = "Archivo";
+            // 
+            // guardarToolStripMenuItem
+            // 
+            this.guardarToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.Insert;
+            this.guardarToolStripMenuItem.MergeIndex = 3;
+            this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
+            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.guardarToolStripMenuItem.Text = "Guardar";
+            this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
+            // 
+            // guardaComoToolStripMenuItem
+            // 
+            this.guardaComoToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.Insert;
+            this.guardaComoToolStripMenuItem.MergeIndex = 4;
+            this.guardaComoToolStripMenuItem.Name = "guardaComoToolStripMenuItem";
+            this.guardaComoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.guardaComoToolStripMenuItem.Text = "Guarda como";
+            this.guardaComoToolStripMenuItem.Click += new System.EventHandler(this.guardaComoToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.MergeAction = System.Windows.Forms.MergeAction.Insert;
+            this.toolStripSeparator1.MergeIndex = 5;
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(221, 6);
             // 
             // VentanaHija
             // 
@@ -132,5 +172,9 @@
         private System.Windows.Forms.ToolStripMenuItem tRotar;
         private System.Windows.Forms.ToolStripMenuItem tAñadir;
         private System.Windows.Forms.ToolStripMenuItem tEscalagrises;
+        private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem guardarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem guardaComoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }

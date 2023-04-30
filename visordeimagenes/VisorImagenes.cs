@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -57,8 +58,16 @@ namespace visordeimagenes
             hija.PictureBox.SizeMode = PictureBoxSizeMode.AutoSize;
             hija.AutoScroll = true;
             hija.Show();
-            this.VentanaHija.AutoScroll = true;
             this.VentanaHija.PictureBox.Image = Resource1.imagen;
+        }
+        private void NuevaHija(string titulo, Image img)
+        {
+            VentanaHija hija = new VentanaHija(titulo);
+            hija.MdiParent = this;
+            hija.PictureBox.SizeMode = PictureBoxSizeMode.AutoSize;
+            hija.AutoScroll = true;
+            hija.Show();
+            this.VentanaHija.PictureBox.Image = img;
         }
 
         public VentanaHija VentanaHija { 
@@ -73,10 +82,50 @@ namespace visordeimagenes
             }
           
         }
-        
-        private void tAjustar_Click(object sender, EventArgs e)
+        private void tAbrir_Click(object sender, EventArgs e)
+        {
+            // Mostrar diálogo OpenFileDialog 
+            OpenFileDialog dialogo = new OpenFileDialog();
+            dialogo.Filter = "Archivos de imagen (*.jpg, *.png, *.bmp)|*.jpg;*.png;*.bmp";
+            dialogo.Title = "Seleccionar imagen";
+            if (dialogo.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            // Leer el contenido del archivo en un arreglo de bytes
+            byte[] contenidoArchivo = File.ReadAllBytes(dialogo.FileName);
+
+            // Crear un flujo de memoria a partir del contenido del archivo
+            using (MemoryStream ms = new MemoryStream(contenidoArchivo))
+            {
+                // Crear una imagen a partir del flujo
+                Image imagen = Image.FromStream(ms);
+                imagen = new Bitmap(imagen, new Size(imagen.Width, imagen.Height));
+                string titulo = "Doc" + (this.MdiChildren.Length + 1);
+                NuevaHija(titulo, imagen);
+            }
+        }
+        private void actulizarmenu()
+        {
+            tCerrar.Enabled = this.ActiveMdiChild != null;
+
+
+            tCascada.Enabled = this.ActiveMdiChild != null;
+            tMosaicov.Enabled = this.ActiveMdiChild != null;
+            tMosaicoh.Enabled = this.ActiveMdiChild != null;
+
+        }
+
+        private void VisorImagenes_MdiChildActivate(object sender, EventArgs e)
+        {
+            actulizarmenu();
+        }
+
+        private void VisorImagenes_Load(object sender, EventArgs e)
         {
 
+            actulizarmenu();
         }
     }
 }
