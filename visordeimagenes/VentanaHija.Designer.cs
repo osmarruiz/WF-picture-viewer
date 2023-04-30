@@ -34,6 +34,7 @@
             this.menuImagenAjustar = new System.Windows.Forms.ToolStripMenuItem();
             this.tRotar = new System.Windows.Forms.ToolStripMenuItem();
             this.tAñadir = new System.Windows.Forms.ToolStripMenuItem();
+            this.tEscalagrises = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.m_PictureBox)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -41,9 +42,9 @@
             // m_PictureBox
             // 
             this.m_PictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.m_PictureBox.Location = new System.Drawing.Point(0, 0);
+            this.m_PictureBox.Location = new System.Drawing.Point(0, 28);
             this.m_PictureBox.Name = "m_PictureBox";
-            this.m_PictureBox.Size = new System.Drawing.Size(700, 452);
+            this.m_PictureBox.Size = new System.Drawing.Size(700, 424);
             this.m_PictureBox.TabIndex = 0;
             this.m_PictureBox.TabStop = false;
             // 
@@ -64,7 +65,8 @@
             this.imagenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuImagenAjustar,
             this.tRotar,
-            this.tAñadir});
+            this.tAñadir,
+            this.tEscalagrises});
             this.imagenToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.Insert;
             this.imagenToolStripMenuItem.MergeIndex = 3;
             this.imagenToolStripMenuItem.Name = "imagenToolStripMenuItem";
@@ -91,6 +93,13 @@
             this.tAñadir.Size = new System.Drawing.Size(224, 26);
             this.tAñadir.Text = "Añadir texto";
             this.tAñadir.Click += new System.EventHandler(this.tAñadir_Click);
+            // 
+            // tEscalagrises
+            // 
+            this.tEscalagrises.Name = "tEscalagrises";
+            this.tEscalagrises.Size = new System.Drawing.Size(224, 26);
+            this.tEscalagrises.Text = "Escala de grises";
+            this.tEscalagrises.Click += new System.EventHandler(this.tEscalagrises_Click);
             // 
             // VentanaHija
             // 
@@ -122,5 +131,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuImagenAjustar;
         private System.Windows.Forms.ToolStripMenuItem tRotar;
         private System.Windows.Forms.ToolStripMenuItem tAñadir;
+        private System.Windows.Forms.ToolStripMenuItem tEscalagrises;
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,8 +17,8 @@ namespace visordeimagenes
         {
             InitializeComponent();
             this.Text = titulo;
-            /*this.Activated += VentanaHija_Activated;
-            this.FormClosing += VentanaHija_FormClosing;*/
+            this.Activated += VentanaHija_Activated;
+            this.FormClosing += VentanaHija_FormClosing;
         }
 
         public PictureBox PictureBox 
@@ -109,5 +110,35 @@ namespace visordeimagenes
                 mdiContainer.Text = "Visor de imagenes";
             }
         }
+
+        private bool escala_grises_aplic = false;
+        private void tEscalagrises_Click(object sender, EventArgs e)
+        {
+            if (!escala_grises_aplic)
+            {
+                PictureBox pictureBox = this.PictureBox;
+                Image imagen = pictureBox.Image;
+                    using (Graphics gfx = Graphics.FromImage(imagen))
+                    {
+                        // Matriz para realizar una transformación al gris 
+                        // manteniendo los valores de luminancia correctos 
+                        ColorMatrix cm = new ColorMatrix(new float[][]{
+                    new float[]{0.3f,0.3f,0.3f,0,0},
+                    new float[]{0.59f,0.59f,0.59f,0,0},
+                    new float[]{0.11f,0.11f,0.11f,0,0},
+                    new float[]{0,0,0,1,0},
+                    new float[]{0,0,0,0,1}});
+                        ImageAttributes ia = new ImageAttributes();
+                        ia.SetColorMatrix(cm);
+                    // Utilizar el método DrawImage de gfx para redibujar la 
+                    // imagen usando los atributos de imagen especificados por ia
+                    gfx.DrawImage(imagen, new Rectangle(0, 0, imagen.Width, imagen.Height), 0, 0, imagen.Width, imagen.Height, GraphicsUnit.Pixel, ia);
+                }
+                // Refrescar el picture box 
+                this.PictureBox.Refresh();
+                escala_grises_aplic = true;
+            }
+        }
     }
 }
+
