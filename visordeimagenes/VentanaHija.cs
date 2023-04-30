@@ -65,5 +65,23 @@ namespace visordeimagenes
                 this.PictureBox.Refresh();
             }
         }
+
+        private void tAñadir_Click(object sender, EventArgs e)
+        {
+            using (Graphics gfx = Graphics.FromImage(this.PictureBox.Image))
+            {
+                // Crear un objeto Font con una fuente Arial de 20 puntos
+                Font font = new Font("Arial", 20);
+
+                // Crear un objeto SolidBrush con el color blanco
+                SolidBrush brush = new SolidBrush(Color.Black);
+
+                // Dibujar el texto "Programación Visual" en la posición 0,0 de la imagen
+                gfx.DrawString("Programación Visual", font, brush, new Point(0, 0));
+            }
+
+            // Refrescar el PictureBox para mostrar la imagen actualizada
+            PictureBox.Refresh();
+        }
     }
 }

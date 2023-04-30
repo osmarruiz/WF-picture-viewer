@@ -33,6 +33,7 @@
             this.imagenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuImagenAjustar = new System.Windows.Forms.ToolStripMenuItem();
             this.tRotar = new System.Windows.Forms.ToolStripMenuItem();
+            this.tAñadir = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.m_PictureBox)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -62,7 +63,8 @@
             // 
             this.imagenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuImagenAjustar,
-            this.tRotar});
+            this.tRotar,
+            this.tAñadir});
             this.imagenToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.Insert;
             this.imagenToolStripMenuItem.MergeIndex = 3;
             this.imagenToolStripMenuItem.Name = "imagenToolStripMenuItem";
@@ -82,6 +84,13 @@
             this.tRotar.Size = new System.Drawing.Size(224, 26);
             this.tRotar.Text = "Rotar 90 grados";
             this.tRotar.Click += new System.EventHandler(this.tRotar_Click);
+            // 
+            // tAñadir
+            // 
+            this.tAñadir.Name = "tAñadir";
+            this.tAñadir.Size = new System.Drawing.Size(224, 26);
+            this.tAñadir.Text = "Añadir texto";
+            this.tAñadir.Click += new System.EventHandler(this.tAñadir_Click);
             // 
             // VentanaHija
             // 
@@ -110,5 +119,6 @@
         private System.Windows.Forms.ToolStripMenuItem imagenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuImagenAjustar;
         private System.Windows.Forms.ToolStripMenuItem tRotar;
+        private System.Windows.Forms.ToolStripMenuItem tAñadir;
     }
 }
