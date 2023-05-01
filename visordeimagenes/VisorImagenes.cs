@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace visordeimagenes
 {
@@ -92,10 +93,16 @@ namespace visordeimagenes
             {
                 return;
             }
+            AbrirArchivo(dialogo.FileName);
+
+            
+        }
+
+        private void AbrirArchivo(string ruta)
+        {
 
             // Leer el contenido del archivo en un arreglo de bytes
-            byte[] contenidoArchivo = File.ReadAllBytes(dialogo.FileName);
-
+            byte[] contenidoArchivo = File.ReadAllBytes(ruta);
             // Crear un flujo de memoria a partir del contenido del archivo
             using (MemoryStream ms = new MemoryStream(contenidoArchivo))
             {
@@ -126,6 +133,36 @@ namespace visordeimagenes
         {
 
             actulizarmenu();
+        }
+
+        private void VisorImagenes_DragEnter(object sender, DragEventArgs e)
+        {
+            // Nos aseguramos de que lo que se está arrastrando son archivos 
+            if (!e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.None;
+                return;
+            }
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            foreach (string file in files)
+            {
+                if (!file.ToUpper().EndsWith(".JPG") &&
+                 !file.ToUpper().EndsWith(".BMP") &&
+                 !file.ToUpper().EndsWith(".GIF"))
+                {
+                    e.Effect = DragDropEffects.None; // Uno de los archivos no 
+                                                     // es una imagen 
+                    return;
+                }
+            }
+            e.Effect = DragDropEffects.Copy; // Correcto, son todo imágenes 
+        }
+
+        private void VisorImagenes_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            foreach (string file in files)
+                AbrirArchivo(file);
         }
     }
 }

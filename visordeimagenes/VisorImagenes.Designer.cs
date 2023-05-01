@@ -289,6 +289,7 @@
             // 
             // VisorImagenes
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1068, 636);
@@ -301,6 +302,8 @@
             this.Text = "Visor de imagenes";
             this.Load += new System.EventHandler(this.VisorImagenes_Load);
             this.MdiChildActivate += new System.EventHandler(this.VisorImagenes_MdiChildActivate);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.VisorImagenes_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.VisorImagenes_DragEnter);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.mainMenu.ResumeLayout(false);

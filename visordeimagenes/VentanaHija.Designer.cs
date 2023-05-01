@@ -80,28 +80,28 @@
             // menuImagenAjustar
             // 
             this.menuImagenAjustar.Name = "menuImagenAjustar";
-            this.menuImagenAjustar.Size = new System.Drawing.Size(198, 26);
+            this.menuImagenAjustar.Size = new System.Drawing.Size(224, 26);
             this.menuImagenAjustar.Text = "Ajustar Ventana";
             this.menuImagenAjustar.Click += new System.EventHandler(this.ajustarVentanaToolStripMenuItem_Click);
             // 
             // tRotar
             // 
             this.tRotar.Name = "tRotar";
-            this.tRotar.Size = new System.Drawing.Size(198, 26);
+            this.tRotar.Size = new System.Drawing.Size(224, 26);
             this.tRotar.Text = "Rotar 90 grados";
             this.tRotar.Click += new System.EventHandler(this.tRotar_Click);
             // 
             // tAñadir
             // 
             this.tAñadir.Name = "tAñadir";
-            this.tAñadir.Size = new System.Drawing.Size(198, 26);
+            this.tAñadir.Size = new System.Drawing.Size(224, 26);
             this.tAñadir.Text = "Añadir texto";
             this.tAñadir.Click += new System.EventHandler(this.tAñadir_Click);
             // 
             // tEscalagrises
             // 
             this.tEscalagrises.Name = "tEscalagrises";
-            this.tEscalagrises.Size = new System.Drawing.Size(198, 26);
+            this.tEscalagrises.Size = new System.Drawing.Size(224, 26);
             this.tEscalagrises.Text = "Escala de grises";
             this.tEscalagrises.Click += new System.EventHandler(this.tEscalagrises_Click);
             // 
@@ -131,7 +131,7 @@
             this.guardaComoToolStripMenuItem.MergeIndex = 4;
             this.guardaComoToolStripMenuItem.Name = "guardaComoToolStripMenuItem";
             this.guardaComoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.guardaComoToolStripMenuItem.Text = "Guarda como";
+            this.guardaComoToolStripMenuItem.Text = "Guardar como";
             this.guardaComoToolStripMenuItem.Click += new System.EventHandler(this.guardaComoToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
