@@ -39,7 +39,6 @@
             this.tCerrar = new System.Windows.Forms.ToolStripMenuItem();
             this.tNuevo = new System.Windows.Forms.ToolStripMenuItem();
             this.tAbrir = new System.Windows.Forms.ToolStripMenuItem();
-            this.tEdicion = new System.Windows.Forms.ToolStripMenuItem();
             this.tVer = new System.Windows.Forms.ToolStripMenuItem();
             this.tVentana = new System.Windows.Forms.ToolStripMenuItem();
             this.tCascada = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,6 +51,9 @@
             this.etiquetaEstado = new System.Windows.Forms.ToolStripStatusLabel();
             this.mostrarestado = new System.Windows.Forms.ToolStripMenuItem();
             this.mostrarherramienta = new System.Windows.Forms.ToolStripMenuItem();
+            this.edicionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tCopiar = new System.Windows.Forms.ToolStripMenuItem();
+            this.tPegar = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.mainMenu.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -118,7 +120,7 @@
             this.mainMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tArchivo,
-            this.tEdicion,
+            this.edicionToolStripMenuItem,
             this.tVer,
             this.tVentana,
             this.tAyuda});
@@ -176,12 +178,6 @@
             this.tAbrir.Click += new System.EventHandler(this.tAbrir_Click);
             this.tAbrir.MouseEnter += new System.EventHandler(this.tAbrir_MouseEnter);
             this.tAbrir.MouseLeave += new System.EventHandler(this.tAbrir_MouseLeave);
-            // 
-            // tEdicion
-            // 
-            this.tEdicion.Name = "tEdicion";
-            this.tEdicion.Size = new System.Drawing.Size(72, 24);
-            this.tEdicion.Text = "Edicion";
             // 
             // tVer
             // 
@@ -281,6 +277,30 @@
             this.mostrarherramienta.Text = "Mostrar / Ocultar barra de herramientas";
             this.mostrarherramienta.Click += new System.EventHandler(this.mostrarBarraDeHerramientasToolStripMenuItem_Click);
             // 
+            // edicionToolStripMenuItem
+            // 
+            this.edicionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tCopiar,
+            this.tPegar});
+            this.edicionToolStripMenuItem.Name = "edicionToolStripMenuItem";
+            this.edicionToolStripMenuItem.Size = new System.Drawing.Size(72, 24);
+            this.edicionToolStripMenuItem.Text = "Edicion";
+            // 
+            // tCopiar
+            // 
+            this.tCopiar.Enabled = false;
+            this.tCopiar.Name = "tCopiar";
+            this.tCopiar.Size = new System.Drawing.Size(224, 26);
+            this.tCopiar.Text = "Copiar";
+            this.tCopiar.Click += new System.EventHandler(this.copiarToolStripMenuItem_Click);
+            // 
+            // tPegar
+            // 
+            this.tPegar.Name = "tPegar";
+            this.tPegar.Size = new System.Drawing.Size(224, 26);
+            this.tPegar.Text = "Pegar";
+            this.tPegar.Click += new System.EventHandler(this.pegarToolStripMenuItem_Click);
+            // 
             // VisorImagenes
             // 
             this.AllowDrop = true;
@@ -317,7 +337,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButton8;
         private System.Windows.Forms.MenuStrip mainMenu;
         private System.Windows.Forms.ToolStripMenuItem tArchivo;
-        private System.Windows.Forms.ToolStripMenuItem tEdicion;
         private System.Windows.Forms.ToolStripMenuItem tVer;
         private System.Windows.Forms.ToolStripMenuItem tVentana;
         private System.Windows.Forms.ToolStripMenuItem tAyuda;
@@ -334,6 +353,9 @@
         private System.Windows.Forms.ToolStripStatusLabel etiquetaEstado;
         private System.Windows.Forms.ToolStripMenuItem mostrarestado;
         private System.Windows.Forms.ToolStripMenuItem mostrarherramienta;
+        private System.Windows.Forms.ToolStripMenuItem edicionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tCopiar;
+        private System.Windows.Forms.ToolStripMenuItem tPegar;
     }
 }
 

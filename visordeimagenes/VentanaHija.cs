@@ -34,16 +34,14 @@ namespace visordeimagenes
         private void ajustarVentanaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Si no estamos en modo ajustar, activamos este modo 
-            if (this.PictureBox.SizeMode ==
-            PictureBoxSizeMode.AutoSize)
+            if (this.PictureBox.SizeMode == PictureBoxSizeMode.AutoSize)
             {
                 this.AutoScroll = false;
                 this.PictureBox.Size = this.ClientSize;
                 this.PictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             }
             // Si estamos en modo ajustar, desactivamos este modo 
-            else if (this.PictureBox.SizeMode ==
-            PictureBoxSizeMode.Zoom)
+            else if (this.PictureBox.SizeMode == PictureBoxSizeMode.Zoom)
             {
                 this.AutoScroll = true;
                 this.PictureBox.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -110,12 +108,10 @@ namespace visordeimagenes
                 mdiContainer.Text = "Visor de imagenes";
             }
         }
-
-        private bool escala_grises_aplic = false;
+        
         private void tEscalagrises_Click(object sender, EventArgs e)
         {
-            if (!escala_grises_aplic)
-            {
+
                 PictureBox pictureBox = this.PictureBox;
                 Image imagen = pictureBox.Image;
                     using (Graphics gfx = Graphics.FromImage(imagen))
@@ -136,40 +132,42 @@ namespace visordeimagenes
                 }
                 // Refrescar el picture box 
                 this.PictureBox.Refresh();
-                escala_grises_aplic = true;
-            }
         }
 
         private string ruta = "";
         private void guardaComoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Mostrar diálogo SaveFileDialog y configurarlo de forma 
-            // análoga al OpenFileDialog de la opción "Abrir" 
             SaveFileDialog dlgGuardar = new SaveFileDialog();
-            dlgGuardar.Filter = "Archivos JPEG (*.jpg)|*.jpg";
+            dlgGuardar.Filter = "Archivos JPEG (*.jpg)|*.jpg|Archivos PNG (*.png)|*.png|Archivos BMP (*.bmp)|*.bmp";
             dlgGuardar.Title = "Guardar imagen como...";
-            if (dlgGuardar.ShowDialog() != DialogResult.OK)
+            if (dlgGuardar.ShowDialog() == DialogResult.OK)
             {
-                return;
+                string extension = Path.GetExtension(dlgGuardar.FileName).ToLower();
+                ImageFormat formato;
+                switch (extension)
+                {
+                    case ".jpg":
+                        formato = ImageFormat.Jpeg;
+                        break;
+                    case ".png":
+                        formato = ImageFormat.Png;
+                        break;
+                    case ".bmp":
+                        formato = ImageFormat.Bmp;
+                        break;
+                    default:
+                        MessageBox.Show("Formato de archivo no soportado.");
+                        return;
+                }
+                ruta = dlgGuardar.FileName;
+                PictureBox.Image.Save(dlgGuardar.FileName, formato);
+                this.Text = Path.GetFileName(dlgGuardar.FileName);
+                Form mdiContainer = this.MdiParent;
+                if (mdiContainer != null)
+                {
+                    mdiContainer.Text = "Visor de imagenes - " + this.Text;
+                }
             }
-
-            // Guardar la imagen en el archivo seleccionado
-            if (Path.GetExtension(dlgGuardar.FileName).ToLower() == ".jpg")
-            {
-                ruta =dlgGuardar.FileName;
-                PictureBox.Image.Save(dlgGuardar.FileName, ImageFormat.Jpeg);
-            }
-            // Actualizar título de esta ventana
-            this.Text = Path.GetFileName(dlgGuardar.FileName);
-            Form mdiContainer = this.MdiParent;
-
-            // Verificar que el MDIContainer no sea nulo 
-            if (mdiContainer != null)
-            {
-                // Concatenar el título de la ventana hija con el título del MDIContainer
-                mdiContainer.Text = "Visor de imagenes - " + this.Text;
-            }
-
         }
 
         private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -218,7 +216,43 @@ namespace visordeimagenes
             get { return toolStrip1; }
         }
 
-      
+        private void rotar180GradosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var image = this.PictureBox.Image;
+            if (image != null)
+            {
+
+                image.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                this.PictureBox.Refresh();
+            }
+        }
+        private void EscalaRojos_Click(object sender, EventArgs e)
+        {
+                PictureBox pictureBox = this.PictureBox;
+                Image imagen = pictureBox.Image;
+            using (Graphics gfx = Graphics.FromImage(imagen))
+                {
+                    // Matriz para eliminar el componente azul y verde, manteniendo solo el componente rojo
+                    ColorMatrix cm = new ColorMatrix(new float[][]{
+                new float[]{1,0,0,0,0},
+                new float[]{0,0,0,0,0},
+                new float[]{0,0,0,0,0},
+                new float[]{0,0,0,1,0},
+                new float[]{0,0,0,0,1}});
+                    ImageAttributes ia = new ImageAttributes();
+                    ia.SetColorMatrix(cm);
+
+                    // Utilizar el método DrawImage de gfx para redibujar la 
+                    // imagen usando los atributos de imagen especificados por ia
+                    gfx.DrawImage(imagen, new Rectangle(0, 0, imagen.Width, imagen.Height), 0, 0, imagen.Width, imagen.Height, GraphicsUnit.Pixel, ia);
+                }
+                // Refrescar el picture box 
+                this.PictureBox.Refresh();
+
+ 
+        }
+
+       
     }
 }
 

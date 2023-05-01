@@ -118,8 +118,7 @@ namespace visordeimagenes
         private void actulizarmenu()
         {
             tCerrar.Enabled = this.ActiveMdiChild != null;
-
-
+            tCopiar.Enabled = this.ActiveMdiChild != null;
             tCascada.Enabled = this.ActiveMdiChild != null;
             tMosaicov.Enabled = this.ActiveMdiChild != null;
             tMosaicoh.Enabled = this.ActiveMdiChild != null;
@@ -281,6 +280,27 @@ namespace visordeimagenes
             // Actualizar el estado del menú según si la barra de herramientas está visible o no
             mostrarherramienta.Checked = toolStrip1.Visible;
 
+        }
+
+        private void copiarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            Image imagen = this.VentanaHija.PictureBox.Image;
+            if (imagen != null)
+            {
+                Clipboard.SetImage(imagen);
+            }
+        }
+
+        private void pegarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            IDataObject objeto = Clipboard.GetDataObject();
+            if (objeto.GetDataPresent(DataFormats.Bitmap))
+            {
+                Image imagen = (Image)objeto.GetData(DataFormats.Bitmap);
+                string titulo = "Doc" + (this.MdiChildren.Length + 1);
+                NuevaHija(titulo, imagen);
+            }
         }
     }
 }

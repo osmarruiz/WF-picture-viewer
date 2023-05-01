@@ -30,22 +30,24 @@
         {
             this.m_PictureBox = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.imagenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuImagenAjustar = new System.Windows.Forms.ToolStripMenuItem();
-            this.tRotar = new System.Windows.Forms.ToolStripMenuItem();
-            this.tAñadir = new System.Windows.Forms.ToolStripMenuItem();
-            this.tEscalagrises = new System.Windows.Forms.ToolStripMenuItem();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guardaComoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.imagenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuImagenAjustar = new System.Windows.Forms.ToolStripMenuItem();
+            this.tRotar = new System.Windows.Forms.ToolStripMenuItem();
+            this.rotar180GradosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tAñadir = new System.Windows.Forms.ToolStripMenuItem();
+            this.tEscalagrises = new System.Windows.Forms.ToolStripMenuItem();
+            this.EscalaRojos = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.m_PictureBox)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -63,8 +65,8 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.imagenToolStripMenuItem,
-            this.archivoToolStripMenuItem});
+            this.archivoToolStripMenuItem,
+            this.imagenToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(700, 28);
@@ -72,13 +74,51 @@
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.Visible = false;
             // 
+            // archivoToolStripMenuItem
+            // 
+            this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.guardarToolStripMenuItem,
+            this.guardaComoToolStripMenuItem,
+            this.toolStripSeparator1});
+            this.archivoToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.MatchOnly;
+            this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
+            this.archivoToolStripMenuItem.Text = "Archivo";
+            // 
+            // guardarToolStripMenuItem
+            // 
+            this.guardarToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.Insert;
+            this.guardarToolStripMenuItem.MergeIndex = 3;
+            this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
+            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.guardarToolStripMenuItem.Text = "Guardar";
+            this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
+            // 
+            // guardaComoToolStripMenuItem
+            // 
+            this.guardaComoToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.Insert;
+            this.guardaComoToolStripMenuItem.MergeIndex = 4;
+            this.guardaComoToolStripMenuItem.Name = "guardaComoToolStripMenuItem";
+            this.guardaComoToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.guardaComoToolStripMenuItem.Text = "Guardar como";
+            this.guardaComoToolStripMenuItem.Click += new System.EventHandler(this.guardaComoToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.MergeAction = System.Windows.Forms.MergeAction.Insert;
+            this.toolStripSeparator1.MergeIndex = 5;
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(184, 6);
+            // 
             // imagenToolStripMenuItem
             // 
             this.imagenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuImagenAjustar,
             this.tRotar,
+            this.rotar180GradosToolStripMenuItem,
             this.tAñadir,
-            this.tEscalagrises});
+            this.tEscalagrises,
+            this.EscalaRojos});
             this.imagenToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.Insert;
             this.imagenToolStripMenuItem.MergeIndex = 3;
             this.imagenToolStripMenuItem.Name = "imagenToolStripMenuItem";
@@ -99,6 +139,13 @@
             this.tRotar.Text = "Rotar 90 grados";
             this.tRotar.Click += new System.EventHandler(this.tRotar_Click);
             // 
+            // rotar180GradosToolStripMenuItem
+            // 
+            this.rotar180GradosToolStripMenuItem.Name = "rotar180GradosToolStripMenuItem";
+            this.rotar180GradosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.rotar180GradosToolStripMenuItem.Text = "Rotar 180 grados";
+            this.rotar180GradosToolStripMenuItem.Click += new System.EventHandler(this.rotar180GradosToolStripMenuItem_Click);
+            // 
             // tAñadir
             // 
             this.tAñadir.Name = "tAñadir";
@@ -113,41 +160,12 @@
             this.tEscalagrises.Text = "Escala de grises";
             this.tEscalagrises.Click += new System.EventHandler(this.tEscalagrises_Click);
             // 
-            // archivoToolStripMenuItem
+            // EscalaRojos
             // 
-            this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.guardarToolStripMenuItem,
-            this.guardaComoToolStripMenuItem,
-            this.toolStripSeparator1});
-            this.archivoToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.MatchOnly;
-            this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
-            this.archivoToolStripMenuItem.Text = "Archivo";
-            // 
-            // guardarToolStripMenuItem
-            // 
-            this.guardarToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.Insert;
-            this.guardarToolStripMenuItem.MergeIndex = 3;
-            this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.guardarToolStripMenuItem.Text = "Guardar";
-            this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
-            // 
-            // guardaComoToolStripMenuItem
-            // 
-            this.guardaComoToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.Insert;
-            this.guardaComoToolStripMenuItem.MergeIndex = 4;
-            this.guardaComoToolStripMenuItem.Name = "guardaComoToolStripMenuItem";
-            this.guardaComoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.guardaComoToolStripMenuItem.Text = "Guardar como";
-            this.guardaComoToolStripMenuItem.Click += new System.EventHandler(this.guardaComoToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.MergeAction = System.Windows.Forms.MergeAction.Insert;
-            this.toolStripSeparator1.MergeIndex = 5;
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(221, 6);
+            this.EscalaRojos.Name = "EscalaRojos";
+            this.EscalaRojos.Size = new System.Drawing.Size(224, 26);
+            this.EscalaRojos.Text = "Escala de rojos";
+            this.EscalaRojos.Click += new System.EventHandler(this.EscalaRojos_Click);
             // 
             // toolStrip1
             // 
@@ -178,6 +196,13 @@
             this.toolStripButton1.Text = "Guardar";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.MergeAction = System.Windows.Forms.MergeAction.Insert;
+            this.toolStripSeparator2.MergeIndex = 3;
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
+            // 
             // toolStripButton2
             // 
             this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -186,33 +211,9 @@
             this.toolStripButton2.MergeAction = System.Windows.Forms.MergeAction.Insert;
             this.toolStripButton2.MergeIndex = 4;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButton2.Size = new System.Drawing.Size(29, 24);
             this.toolStripButton2.Text = "Ajustar imagen";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
-            // 
-            // toolStripButton3
-            // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Image = global::visordeimagenes.Properties.Resources.fuente;
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.MergeAction = System.Windows.Forms.MergeAction.Insert;
-            this.toolStripButton3.MergeIndex = 7;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(29, 28);
-            this.toolStripButton3.Text = "Texto";
-            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
-            // 
-            // toolStripButton4
-            // 
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Image = global::visordeimagenes.Properties.Resources.imagen__1_;
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.MergeAction = System.Windows.Forms.MergeAction.Insert;
-            this.toolStripButton4.MergeIndex = 6;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(29, 28);
-            this.toolStripButton4.Text = "Rotar";
-            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
             // toolStripButton5
             // 
@@ -222,16 +223,33 @@
             this.toolStripButton5.MergeAction = System.Windows.Forms.MergeAction.Insert;
             this.toolStripButton5.MergeIndex = 5;
             this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButton5.Size = new System.Drawing.Size(29, 24);
             this.toolStripButton5.Text = "Escala de grises";
             this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
-            // toolStripSeparator2
+            // toolStripButton4
             // 
-            this.toolStripSeparator2.MergeAction = System.Windows.Forms.MergeAction.Insert;
-            this.toolStripSeparator2.MergeIndex = 3;
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
+            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton4.Image = global::visordeimagenes.Properties.Resources.imagen__1_;
+            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton4.MergeAction = System.Windows.Forms.MergeAction.Insert;
+            this.toolStripButton4.MergeIndex = 6;
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(29, 24);
+            this.toolStripButton4.Text = "Rotar";
+            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Image = global::visordeimagenes.Properties.Resources.fuente;
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.MergeAction = System.Windows.Forms.MergeAction.Insert;
+            this.toolStripButton3.MergeIndex = 7;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(29, 24);
+            this.toolStripButton3.Text = "Texto";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // VentanaHija
             // 
@@ -278,5 +296,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripButton toolStripButton4;
         private System.Windows.Forms.ToolStripButton toolStripButton5;
+        private System.Windows.Forms.ToolStripMenuItem rotar180GradosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem EscalaRojos;
     }
 }
