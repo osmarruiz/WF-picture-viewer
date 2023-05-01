@@ -188,6 +188,37 @@ namespace visordeimagenes
                 }
             
         }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            guardarToolStripMenuItem_Click(sender, e);
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            ajustarVentanaToolStripMenuItem_Click(sender, e);
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            tAñadir_Click(sender, e);
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            tRotar_Click(sender, e);
+        }
+
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+            tEscalagrises_Click(sender, e);
+        }
+        public ToolStrip barraHerramientas
+        {
+            get { return toolStrip1; }
+        }
+
+      
     }
 }
 

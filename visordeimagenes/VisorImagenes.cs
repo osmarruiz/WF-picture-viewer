@@ -17,7 +17,9 @@ namespace visordeimagenes
         public VisorImagenes()
         {
             InitializeComponent();
+
         }
+
 
 
         private void tCascada_Click(object sender, EventArgs e)
@@ -71,17 +73,17 @@ namespace visordeimagenes
             this.VentanaHija.PictureBox.Image = img;
         }
 
-        public VentanaHija VentanaHija { 
-            get { return (VentanaHija)this.ActiveMdiChild;} 
+        public VentanaHija VentanaHija {
+            get { return (VentanaHija)this.ActiveMdiChild; }
         }
 
         private void tCerrar_Click(object sender, EventArgs e)
         {
-            if(this.ActiveMdiChild != null)
+            if (this.ActiveMdiChild != null)
             {
                 this.VentanaHija.Close();
             }
-          
+
         }
         private void tAbrir_Click(object sender, EventArgs e)
         {
@@ -95,7 +97,7 @@ namespace visordeimagenes
             }
             AbrirArchivo(dialogo.FileName);
 
-            
+
         }
 
         private void AbrirArchivo(string ruta)
@@ -127,6 +129,10 @@ namespace visordeimagenes
         private void VisorImagenes_MdiChildActivate(object sender, EventArgs e)
         {
             actulizarmenu();
+            ToolStripManager.RevertMerge(toolStrip1);
+            VentanaHija ventanaHijaActiva = this.ActiveMdiChild as VentanaHija;
+            if (ventanaHijaActiva != null)
+                ToolStripManager.Merge(ventanaHijaActiva.barraHerramientas, toolStrip1);
         }
 
         private void VisorImagenes_Load(object sender, EventArgs e)
@@ -163,6 +169,118 @@ namespace visordeimagenes
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
             foreach (string file in files)
                 AbrirArchivo(file);
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            tNuevo_Click(sender, e);
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            tAbrir_Click(sender, e);
+        }
+
+        private void toolStripButton8_Click(object sender, EventArgs e)
+        {
+            tAcercade_Click(sender, e);
+        }
+
+        private void tNuevo_MouseEnter(object sender, EventArgs e)
+        {
+            etiquetaEstado.Text = "Crea una nueva ventana con una imagen predeterminada";
+        }
+
+        private void tNuevo_MouseLeave(object sender, EventArgs e)
+        {
+            etiquetaEstado.Text = "";
+        }
+
+        private void tSalir_MouseEnter(object sender, EventArgs e)
+        {
+            etiquetaEstado.Text = "Cierra el programa";
+        }
+
+        private void tSalir_MouseLeave(object sender, EventArgs e)
+        {
+            etiquetaEstado.Text = "";
+        }
+
+        private void tCerrar_MouseEnter(object sender, EventArgs e)
+        {
+            etiquetaEstado.Text = "Cierra una ventana con fotografia";
+        }
+
+        private void tCerrar_MouseLeave(object sender, EventArgs e)
+        {
+            etiquetaEstado.Text = "";
+        }
+
+        private void tAbrir_MouseEnter(object sender, EventArgs e)
+        {
+            etiquetaEstado.Text = "Abre una foto desde tu explorador";
+        }
+
+        private void tAbrir_MouseLeave(object sender, EventArgs e)
+        {
+            etiquetaEstado.Text = "";
+        }
+
+        private void toolStripButton1_MouseEnter(object sender, EventArgs e)
+        {
+            etiquetaEstado.Text = "Crea una nueva ventana con una imagen predeterminada";
+        }
+
+        private void toolStripButton1_MouseLeave(object sender, EventArgs e)
+        {
+            etiquetaEstado.Text = "";
+        }
+
+        private void toolStripButton2_MouseEnter(object sender, EventArgs e)
+        {
+            etiquetaEstado.Text = "Abre una foto desde tu explorador";
+        }
+
+        private void toolStripButton2_MouseLeave(object sender, EventArgs e)
+        {
+            etiquetaEstado.Text = "";
+        }
+
+        private void toolStripButton8_MouseEnter(object sender, EventArgs e)
+        {
+            etiquetaEstado.Text = "Informacion acerca de la aplicacion";
+
+        }
+
+        private void toolStripButton8_MouseLeave(object sender, EventArgs e)
+        {
+            etiquetaEstado.Text = "";
+        }
+
+        private void tVer_DropDownOpened(object sender, EventArgs e)
+        {
+            // Actualizar el estado de cada orden de menú según si la barra correspondiente está visible o no
+            mostrarestado.Checked = statusStrip1.Visible;
+            mostrarherramienta.Checked = toolStrip1.Visible;
+        }
+
+        private void mostrarBarraDeEstadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Mostrar u ocultar la barra de estado según el estado actual del menú
+            statusStrip1.Visible = !statusStrip1.Visible;
+
+            // Actualizar el estado del menú según si la barra de estado está visible o no
+            mostrarestado.Checked = statusStrip1.Visible;
+        }
+
+        private void mostrarBarraDeHerramientasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Mostrar u ocultar la barra de herramientas según el estado actual del menú
+            toolStrip1.Visible = !toolStrip1.Visible;
+
+            // Actualizar el estado del menú según si la barra de herramientas está visible o no
+            mostrarherramienta.Checked = toolStrip1.Visible;
+
         }
     }
 }
