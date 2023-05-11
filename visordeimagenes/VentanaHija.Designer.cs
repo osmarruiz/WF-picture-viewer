@@ -48,6 +48,7 @@
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.EscalaAzules = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.m_PictureBox)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -55,9 +56,9 @@
             // 
             // m_PictureBox
             // 
-            this.m_PictureBox.Location = new System.Drawing.Point(0, 96);
+            this.m_PictureBox.Location = new System.Drawing.Point(0, 1);
             this.m_PictureBox.Name = "m_PictureBox";
-            this.m_PictureBox.Size = new System.Drawing.Size(701, 354);
+            this.m_PictureBox.Size = new System.Drawing.Size(701, 449);
             this.m_PictureBox.TabIndex = 0;
             this.m_PictureBox.TabStop = false;
             // 
@@ -69,7 +70,7 @@
             this.imagenToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(700, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(700, 30);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.Visible = false;
@@ -90,7 +91,7 @@
             this.guardarToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.Insert;
             this.guardarToolStripMenuItem.MergeIndex = 3;
             this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.guardarToolStripMenuItem.Text = "Guardar";
             this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
@@ -99,7 +100,7 @@
             this.guardaComoToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.Insert;
             this.guardaComoToolStripMenuItem.MergeIndex = 4;
             this.guardaComoToolStripMenuItem.Name = "guardaComoToolStripMenuItem";
-            this.guardaComoToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.guardaComoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.guardaComoToolStripMenuItem.Text = "Guardar como";
             this.guardaComoToolStripMenuItem.Click += new System.EventHandler(this.guardaComoToolStripMenuItem_Click);
             // 
@@ -108,7 +109,7 @@
             this.toolStripSeparator1.MergeAction = System.Windows.Forms.MergeAction.Insert;
             this.toolStripSeparator1.MergeIndex = 5;
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(184, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(221, 6);
             // 
             // imagenToolStripMenuItem
             // 
@@ -118,7 +119,8 @@
             this.rotar180GradosToolStripMenuItem,
             this.tAñadir,
             this.tEscalagrises,
-            this.EscalaRojos});
+            this.EscalaRojos,
+            this.EscalaAzules});
             this.imagenToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.Insert;
             this.imagenToolStripMenuItem.MergeIndex = 3;
             this.imagenToolStripMenuItem.Name = "imagenToolStripMenuItem";
@@ -251,6 +253,13 @@
             this.toolStripButton3.Text = "Texto";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
+            // EscalaAzules
+            // 
+            this.EscalaAzules.Name = "EscalaAzules";
+            this.EscalaAzules.Size = new System.Drawing.Size(224, 26);
+            this.EscalaAzules.Text = "Escala de azules";
+            this.EscalaAzules.Click += new System.EventHandler(this.EscalaAzules_Click);
+            // 
             // VentanaHija
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -298,5 +307,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButton5;
         private System.Windows.Forms.ToolStripMenuItem rotar180GradosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem EscalaRojos;
+        private System.Windows.Forms.ToolStripMenuItem EscalaAzules;
     }
 }

@@ -26,11 +26,12 @@ namespace visordeimagenes
         { 
             get { return m_PictureBox; }
         }
-
+        //las opciones del menustrip1 se muestran en el main menu
         private void VentanaHija_Load(object sender, EventArgs e)
         {
             this.MainMenuStrip = menuStrip1;
         }
+        //ajusta la ventana hija
         private void ajustarVentanaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Si no estamos en modo ajustar, activamos este modo 
@@ -49,13 +50,13 @@ namespace visordeimagenes
             //Si selecciono la opcion ajustar saldra checked
             menuImagenAjustar.Checked = this.PictureBox.SizeMode == PictureBoxSizeMode.Zoom;
         }
-
+        //evento resize de la ventana hija
         private void VentanaHija_Resize(object sender, EventArgs e)
         {
             if (this.PictureBox.SizeMode == PictureBoxSizeMode.Zoom)
                 this.PictureBox.Size = this.ClientSize;
         }
-
+        //rota la imagen a 90 grados
         private void tRotar_Click(object sender, EventArgs e)
         {
             var image = this.PictureBox.Image;
@@ -66,7 +67,7 @@ namespace visordeimagenes
                 this.PictureBox.Refresh();
             }
         }
-
+        //añade un texto a la imagen
         private void tAñadir_Click(object sender, EventArgs e)
         {
             using (Graphics gfx = Graphics.FromImage(this.PictureBox.Image))
@@ -84,7 +85,7 @@ namespace visordeimagenes
             // Refrescar el PictureBox para mostrar la imagen actualizada
             PictureBox.Refresh();
         }
-
+        //cambia el titulo del mdi container
         private void VentanaHija_Activated(object sender, EventArgs e)
         {
             Form mdiContainer = this.MdiParent;
@@ -96,7 +97,7 @@ namespace visordeimagenes
                 mdiContainer.Text = "Visor de imagenes - " + this.Text;
             }
         }
-
+        //si no hay ninguna ventana hija, el mdicontainer vuelve a su titulo
         private void VentanaHija_FormClosing(object sender, FormClosingEventArgs e)
         {
             Form mdiContainer = this.MdiParent;
@@ -108,13 +109,19 @@ namespace visordeimagenes
                 mdiContainer.Text = "Visor de imagenes";
             }
         }
-        
+
+        private Image imagenOriginal;
+        //convierte la imagen en escala de grises
         private void tEscalagrises_Click(object sender, EventArgs e)
         {
 
-                PictureBox pictureBox = this.PictureBox;
-                Image imagen = pictureBox.Image;
-                    using (Graphics gfx = Graphics.FromImage(imagen))
+            if(imagenOriginal == null )
+            {
+                imagenOriginal = this.PictureBox.Image;
+            }
+            Image imagen = (Image)imagenOriginal.Clone();
+
+            using (Graphics gfx = Graphics.FromImage(imagen))
                     {
                         // Matriz para realizar una transformación al gris 
                         // manteniendo los valores de luminancia correctos 
@@ -130,11 +137,63 @@ namespace visordeimagenes
                     // imagen usando los atributos de imagen especificados por ia
                     gfx.DrawImage(imagen, new Rectangle(0, 0, imagen.Width, imagen.Height), 0, 0, imagen.Width, imagen.Height, GraphicsUnit.Pixel, ia);
                 }
-                // Refrescar el picture box 
-                this.PictureBox.Refresh();
+            this.PictureBox.Image = imagen;
+        }
+        //convierte la imagen en escala de rojos
+        private void EscalaRojos_Click(object sender, EventArgs e)
+        {
+            if (imagenOriginal == null)
+            {
+                imagenOriginal = this.PictureBox.Image;
+            }
+            Image imagen = (Image)imagenOriginal.Clone();
+            using (Graphics gfx = Graphics.FromImage(imagen))
+            {
+                // Matriz para eliminar el componente azul y verde, manteniendo solo el componente rojo
+                ColorMatrix cm = new ColorMatrix(new float[][]{
+                new float[]{1,0,0,0,0},
+                new float[]{0,0,0,0,0},
+                new float[]{0,0,0,0,0},
+                new float[]{0,0,0,1,0},
+                new float[]{0,0,0,0,1}});
+                ImageAttributes ia = new ImageAttributes();
+                ia.SetColorMatrix(cm);
+
+                // Utilizar el método DrawImage de gfx para redibujar la 
+                // imagen usando los atributos de imagen especificados por ia
+                gfx.DrawImage(imagen, new Rectangle(0, 0, imagen.Width, imagen.Height), 0, 0, imagen.Width, imagen.Height, GraphicsUnit.Pixel, ia);
+            }
+            this.PictureBox.Image = imagen;
+        }
+        //convierte la imagen en escala de azules
+        private void EscalaAzules_Click(object sender, EventArgs e)
+        {
+            if (imagenOriginal == null)
+            {
+                imagenOriginal = this.PictureBox.Image;
+            }
+            Image imagen = (Image)imagenOriginal.Clone();
+            using (Graphics gfx = Graphics.FromImage(imagen))
+            {
+                // Matriz para eliminar el componente rojo y verde, manteniendo solo el componente azul
+                ColorMatrix cm = new ColorMatrix(new float[][]{
+            new float[]{0,0,0,0,0},
+            new float[]{0,0,0,0,0},
+            new float[]{0,0,1,0,0},
+            new float[]{0,0,0,1,0},
+            new float[]{0,0,0,0,1}});
+                ImageAttributes ia = new ImageAttributes();
+                ia.SetColorMatrix(cm);
+
+                // Utilizar el método DrawImage de gfx para redibujar la 
+                // imagen usando los atributos de imagen especificados por ia
+                gfx.DrawImage(imagen, new Rectangle(0, 0, imagen.Width, imagen.Height), 0, 0, imagen.Width, imagen.Height, GraphicsUnit.Pixel, ia);
+            }
+            this.PictureBox.Image = imagen;
         }
 
         private string ruta = "";
+        //guardar la imagen como
         private void guardaComoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog dlgGuardar = new SaveFileDialog();
@@ -169,7 +228,7 @@ namespace visordeimagenes
                 }
             }
         }
-
+        //guarda la imagen
         private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
@@ -181,32 +240,48 @@ namespace visordeimagenes
                 else
                 {
                 this.PictureBox.Refresh();
-               
-                PictureBox.Image.Save(ruta, ImageFormat.Jpeg);
+                string extension = Path.GetExtension(ruta);
+
+                // Guardar la nueva imagen con la misma extensión que el archivo original
+                switch (extension)
+                {
+                    case ".bmp":
+                        PictureBox.Image.Save(ruta, ImageFormat.Bmp);
+                        break;
+                    case ".jpg":
+                        PictureBox.Image.Save(ruta, ImageFormat.Jpeg);
+                        break;
+                    case ".png":
+                        PictureBox.Image.Save(ruta, ImageFormat.Png);
+                        break;
+                    default:
+                        MessageBox.Show("Tipo de imagen no compatible", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
                 }
+            }
             
         }
-
+        //guardar imagen
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             guardarToolStripMenuItem_Click(sender, e);
         }
-
+        //ajustar imagen a la ventana hija
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             ajustarVentanaToolStripMenuItem_Click(sender, e);
         }
-
+        //añade texto a la imagen
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             tAñadir_Click(sender, e);
         }
-
+        //rota la imagen a 90 grados
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
             tRotar_Click(sender, e);
         }
-
+        //escala de grises
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
             tEscalagrises_Click(sender, e);
@@ -215,7 +290,7 @@ namespace visordeimagenes
         {
             get { return toolStrip1; }
         }
-
+        //rota la imagen 180 grados
         private void rotar180GradosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var image = this.PictureBox.Image;
@@ -226,33 +301,8 @@ namespace visordeimagenes
                 this.PictureBox.Refresh();
             }
         }
-        private void EscalaRojos_Click(object sender, EventArgs e)
-        {
-                PictureBox pictureBox = this.PictureBox;
-                Image imagen = pictureBox.Image;
-            using (Graphics gfx = Graphics.FromImage(imagen))
-                {
-                    // Matriz para eliminar el componente azul y verde, manteniendo solo el componente rojo
-                    ColorMatrix cm = new ColorMatrix(new float[][]{
-                new float[]{1,0,0,0,0},
-                new float[]{0,0,0,0,0},
-                new float[]{0,0,0,0,0},
-                new float[]{0,0,0,1,0},
-                new float[]{0,0,0,0,1}});
-                    ImageAttributes ia = new ImageAttributes();
-                    ia.SetColorMatrix(cm);
 
-                    // Utilizar el método DrawImage de gfx para redibujar la 
-                    // imagen usando los atributos de imagen especificados por ia
-                    gfx.DrawImage(imagen, new Rectangle(0, 0, imagen.Width, imagen.Height), 0, 0, imagen.Width, imagen.Height, GraphicsUnit.Pixel, ia);
-                }
-                // Refrescar el picture box 
-                this.PictureBox.Refresh();
-
- 
-        }
-
-       
+        
     }
 }
 
